@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?qa68qt');
+  src:  url('fonts/icomoon.eot?qa68qt#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?qa68qt') format('truetype'),
+    url('fonts/icomoon.woff?qa68qt') format('woff'),
+    url('fonts/icomoon.svg?qa68qt#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ic-basket:before {
+  content: "\e900";
+  color: #828282;
+}
+.ic-burger:before {
+  content: "\e901";
+  color: #828282;
+}
+.ic-charts:before {
+  content: "\e902";
+  color: #828282;
+}
+.ic-glasses:before {
+  content: "\e903";
+  color: #828282;
+}
+.ic-instagram:before {
+  content: "\e904";
+  color: #828282;
+}
+.ic-search:before {
+  content: "\e905";
+  color: #828282;
+}
+.ic-sign-in:before {
+  content: "\e906";
+  color: #828282;
+}
+.ic-twitter:before {
+  content: "\e907";
+  color: #828282;
+}
+.ic-vk:before {
+  content: "\e908";
+  color: #828282;
+}

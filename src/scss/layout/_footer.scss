@@ -1,0 +1,38 @@
+.footer{
+    width: $container;
+    margin: auto;
+    @media only screen and (max-width : 1500px){
+        width: $container-lg;
+    }
+    @media only screen and (max-width : 1140px){
+        width: $container-md;
+    }
+    @media only screen and (max-width :880px){
+        width: $container-sm;
+    }
+    @media only screen and (max-width: 576px){
+        width: $container-xs;
+    }
+    &__menu{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media only screen and (max-width : 1140px){
+            flex-wrap: wrap;
+            justify-content: center;
+    }
+    }
+    &__logo{
+        margin-right: 160px;
+        @media only screen and (max-width : 1140px){
+            margin-right: 0 ;
+            margin-bottom: 20px;
+    }
+    &__logoImg{
+        @media only screen and (max-width : 1140px){
+            width: 60%;   
+        }
+    }
+    }
+
+}
