@@ -42,10 +42,11 @@ gulp.task('build-images', done => {
             })
         ]))
         .pipe(gulp.dest('./public/images'))
+        .pipe(browserSync.reload({stream: true}))
     done();
 });
 
-gulp.task('build-js', async done => {
+gulp.task('build-js', done => {
     gulp.src('./src/js/**/*.{js,json}')
         .pipe(named())
         .pipe(webpack(require('./webpack.config')))
@@ -58,6 +59,7 @@ gulp.task('watch', function () {
     gulp.watch('./src/scss/**/*.scss', gulp.series('build-css'));
     gulp.watch('./src/templates/**/*.pug').on('change', gulp.series('build-html'));
     gulp.watch('./src/images/**/*').on('change', gulp.series('build-images'));
+    gulp.watch('./src/js/**/*.{js,json}', gulp.series('build-js'));
     // on('change', browserSync.reload);
 });
 

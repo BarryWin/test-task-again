@@ -39,4 +39,3 @@ var swiper = new Swiper('.swiper-container', {
 let slider = document.getElementsByClassName('swiper-container')
 slider[0].addEventListener("mouseover", () => swiper.autoplay.stop());
 slider[0].addEventListener("mouseout", () => swiper.autoplay.start());
-

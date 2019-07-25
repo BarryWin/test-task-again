@@ -3,12 +3,13 @@ let menu = document.getElementsByClassName('header__menu');
 
 //menuSlideDown
 toggle[0].addEventListener('click', function () {
-        menu[0].classList.toggle('header__menu_addHeight');
-        setTimeout( () => {
-            (menu[0].style.visibility === "visible") ?
-                setTimeout(() => menu[0].style.visibility = "hidden", 250)
-                :menu[0].style.visibility = "visible";}, 50);
+    menu[0].classList.toggle('header__menu_addHeight');
+    setTimeout( () => {
+        (menu[0].style.visibility === "visible") ?
+            setTimeout(() => menu[0].style.visibility = "hidden", 250)
+            :menu[0].style.visibility = "visible";}, 50);
 });
+
 window.onresize = () => {
     if (window.innerWidth >= 880){
         menu[0].style.visibility = "visible";

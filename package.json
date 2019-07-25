@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "browser-sync": "^2.26.7",
+    "file-loader": "^4.1.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.2.0",
     "gulp-imagemin": "^6.0.0",
