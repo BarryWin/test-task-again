@@ -1,0 +1,37 @@
+.basketPopup{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 50%;
+    margin-top: 20px;
+    margin-left: auto;
+    padding: 20px 10px;
+    border: 1px solid #3da1ba;
+    &__product{
+        width: 150px;
+        margin-left: 40px;
+        text-align: center;
+        &:hover{
+        box-shadow: 0 1px 5px 1px #999;
+        }
+    }
+    &__productImg{
+        display: block;
+        width: 120px;
+        margin: auto;
+        background-color: #eee;
+    }
+    &__productTitle{
+        margin-top: 5px;
+        text-align: center;
+    }
+    &__productTextAmount{
+        text-align: center;
+        font-size: 12px;
+        margin-right: 10px;
+    }
+    &__productAmount{
+        width: 40px;
+        text-align: center;
+        border: 1px solid gray;
+    }
+}
