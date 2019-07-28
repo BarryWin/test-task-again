@@ -35,11 +35,11 @@ class ServiceProducts {
                             </div>`;
             slideWrapper.innerHTML = slide;
             let toBasketBtn = slideWrapper.querySelector('.popularGoods__toBasketBtn');
-            toBasketBtn.addEventListener('click', event => {
-                this.productPutRem(item.id,item,toBasketBtn); 
+            toBasketBtn.addEventListener('click', () => {
+                this.productPutOrRem(item.id,item,toBasketBtn);
             });
 
-            this.setBtnsOnLoad(item.id,item,toBasketBtn);
+            this.setBtnsOnLoad(item,toBasketBtn);
 
             this.sliderContainer.appendChild(slideWrapper);
 
@@ -47,29 +47,29 @@ class ServiceProducts {
 
     }
 
-    productPutRem(id,item,toBasketBtn) {
+    productPutOrRem(id,item,toBasketBtn) {
 
         if(!localStorage.getItem(id)){
             item.count = 1;
             localStorage.setItem(id,JSON.stringify(item));
             toBasketBtn.classList.add('popularGoods__toBasketBtn_active');
-            toBasketBtn.innerText = 'в корзине'; 
+            toBasketBtn.innerText = 'в корзине';
         } else {
             localStorage.removeItem(id);
             toBasketBtn.classList.remove('popularGoods__toBasketBtn_active');
-            toBasketBtn.innerText = 'в корзину'; 
+            toBasketBtn.innerText = 'в корзину';
         }
 
     }
 
-    setBtnsOnLoad(id, item, toBasketBtn) {
+    setBtnsOnLoad(item, toBasketBtn) {
 
         if(localStorage.getItem(item.id)){
             toBasketBtn.classList.add('popularGoods__toBasketBtn_active');
-            toBasketBtn.innerText = 'в корзине'; 
+            toBasketBtn.innerText = 'в корзине';
         } else {
             toBasketBtn.classList.remove('popularGoods__toBasketBtn_active');
-            toBasketBtn.innerText = 'в корзину'; 
+            toBasketBtn.innerText = 'в корзину';
         }
 
     }

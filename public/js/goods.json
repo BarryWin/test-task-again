@@ -1,26 +1,35 @@
-[{
-  "id": 1,
-  "image": "../images/slider/glasses1.png",
-  "itemName": "DAVIDOFF Urban Coolness Sunglasses",
-  "price": "14500 руб."
-}, {
-  "id": 2,
-  "image": "../images/slider/glasses2.png",
-  "itemName": "BULGARI NV-2345 Sunglasses",
-  "price": "18500 руб."
-}, {
-  "id": 3,
-  "image": "../images/slider/lenses.png",
-  "itemName": "ACUVUE OASYS with HydraLuxe(30 линз)",
-  "price": "11500 руб."
-}, {
-  "id": 4,
-  "image": "../images/slider/glasses3.png",
-  "itemName": "DAVIDOFF Urban Coolness Sunglasses",
-  "price": "12500 руб."
-}, {
-  "id": 5,
-  "image": "../images/slider/lenses.png",
-  "itemName": "ANOTHER LENSES",
-  "price": "12500 руб."
-}];
+{
+    "items": [
+        {
+            "id": 1,
+            "image": "./images/slider/glasses1.png",
+            "name": "DAVIDOFF Urban Coolness Sunglasses",
+            "price": "14500 руб."
+        },
+        {
+            "id": 2,
+            "image": "./images/slider/glasses2.png",
+            "name": "BULGARI NV-2345 Sunglasses",
+            "price": "18500 руб."
+        },
+        {
+            "id": 3,
+            "image": "./images/slider/lenses.png",
+            "name": "ACUVUE OASYS with HydraLuxe(30 линз)",
+            "price": "11500 руб."
+        },
+        {
+            "id": 4,
+            "image": "./images/slider/glasses3.png",
+            "name": "DAVIDOFF Urban Coolness Sunglasses",
+            "price": "12500 руб."
+        },
+        {
+            "id": 5,
+            "image": "./images/slider/lenses.png",
+            "name": "ANOTHER LENSES",
+            "price": "12500 руб."
+        }
+    ]
+}
+

@@ -7,7 +7,7 @@ header.header
                     span.line__imgGlasses
                     a(href='#').line__link.line__link_colorGray Версия для слабовидящих
                     span.line__seperator
-                li.line__item 
+                li.line__item
                     span.line__imgBars
                     a(href='#').line__link.line__link_colorGray Сравнение товаров
                     span.line__seperator
@@ -20,10 +20,10 @@ header.header
                 li.line__item
                     a(href='#').line__link_colorGray Оплата
                     span.line__seperator
-                li.line__item    
+                li.line__item
                     a(href='#').line__link_colorGray Доставка
                     span.line__seperator
-                li.line__item    
+                li.line__item
                     a(href='#').line__link_colorGray Возврат и обмен
 
     .header__lineTwo
@@ -69,21 +69,44 @@ header.header
                 a(href="#").menu__link  подбор очков
 
     .basketPopup
-        .basketPopup__product
-            img(src="./images/slider/glasses1.png").basketPopup__productImg
-            h4.basketPopup__productTitle Name of the product
-            form(action="#").basketPopup__formBuy
-                label(for="amount").basketPopup__productTextAmount Количество
-                input(id="amount" type="number" min="1" value="1").basketPopup__productAmount
-        .basketPopup__product
-            img(src="./images/slider/glasses1.png").basketPopup__productImg
-            h4.basketPopup__productTitle Name of the product
-            form(action="#").basketPopup__formBuy
-                label(for="amount").basketPopup__productTextAmount Количество
-                input(id="amount" type="number" min="1" value="1").basketPopup__productAmount
-        .basketPopup__product
-            img(src="./images/slider/glasses1.png").basketPopup__productImg
-            h4.basketPopup__productTitle Name of the product
-            form(action="#").basketPopup__formBuy
-                label(for="amount").basketPopup__productTextAmount Количество
-                input(id="amount" type="number" min="1" value="1").basketPopup__productAmount
+        span.basketPopup__close
+        .basketPopup__productsWrapper
+            .basketPopup__product
+                img(src="./images/slider/glasses1.png").basketPopup__productImg
+                h4.basketPopup__productTitle Name of the product
+                form(action="#").basketPopup__formBuy
+                    label.basketPopup__productTextAmount Количество
+                        input(type="number", min="1", value="1").basketPopup__productInputAmount
+                    button(type="button").basketPopup__productRemove Удалить
+            .basketPopup__product
+                img(src="./images/slider/glasses1.png").basketPopup__productImg
+                h4.basketPopup__productTitle Name of the product
+                form(action="#").basketPopup__formBuy
+                    label.basketPopup__productTextAmount Количество
+                        input(type="number" min="1" value="1").basketPopup__productInputAmount
+                    button(type="button").basketPopup__productRemove Удалить
+            .basketPopup__product
+                img(src="./images/slider/glasses1.png").basketPopup__productImg
+                h4.basketPopup__productTitle Name of the product
+                form(action="#").basketPopup__formBuy
+                    label.basketPopup__productTextAmount Количество
+                        input(type="number" min="1" value="1").basketPopup__productInputAmount
+                    button(type="button").basketPopup__productRemove Удалить
+            .basketPopup__product
+                img(src="./images/slider/glasses1.png").basketPopup__productImg
+                h4.basketPopup__productTitle Name of the product
+                form(action="#").basketPopup__formBuy
+                    label.basketPopup__productTextAmount Количество
+                        input(type="number" min="1" value="1").basketPopup__productInputAmount
+                    button(type="button").basketPopup__productRemove Удалить
+        p.basketPopup__totalCount
+            | Количество товаров:
+            span.basketPopup__productsCount 50
+        .basketPopup__totalPrice
+            button(type="button").basketPopup__btnReset Очистить корзину
+            .basketPopup__priceContainer
+                span.basketPopup__text Итого:
+                span.basketPopup__price 12500 руб.
+                button(type="button").basketPopup__btnConfirm Оформить
+
+

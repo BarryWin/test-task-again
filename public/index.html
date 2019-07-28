@@ -17,15 +17,15 @@
             <div class="header__left">
                 <ul class="line line_smFSize">
                     <li class="line__item"><span class="line__imgGlasses"></span><a class="line__link line__link_colorGray" href="#">Версия для слабовидящих</a><span class="line__seperator"></span></li>
-                    <li class="line__item"> <span class="line__imgBars"></span><a class="line__link line__link_colorGray" href="#">Сравнение товаров</a><span class="line__seperator"></span></li>
+                    <li class="line__item"><span class="line__imgBars"></span><a class="line__link line__link_colorGray" href="#">Сравнение товаров</a><span class="line__seperator"></span></li>
                     <li class="line__item"><a class="line__link line__link_colorGray line__link_inst" href="#"></a><a class="line__link line__link_colorGray line__link_twit" href="#"></a><a class="line__link line__link_colorGray line__link_vk" href="#"></a></li>
                 </ul>
             </div>
             <div class="header__right">
                 <ul class="line line_smFSize">
                     <li class="line__item"><a class="line__link_colorGray" href="#">Оплата</a><span class="line__seperator"></span></li>
-                    <li class="line__item"> <a class="line__link_colorGray" href="#">Доставка</a><span class="line__seperator"></span></li>
-                    <li class="line__item"> <a class="line__link_colorGray" href="#">Возврат и обмен</a></li>
+                    <li class="line__item"><a class="line__link_colorGray" href="#">Доставка</a><span class="line__seperator"></span></li>
+                    <li class="line__item"><a class="line__link_colorGray" href="#">Возврат и обмен</a></li>
                 </ul>
             </div>
         </div>
@@ -57,18 +57,28 @@
                 <li class="menu__item"><a class="menu__link" href="#"> подбор очков</a></li>
             </ul>
         </div>
-        <div class="basketPopup">
-            <div class="basketPopup__product"><img class="basketPopup__productImg" src="./images/slider/glasses1.png">
-                <h4 class="basketPopup__productTitle">Name of the product</h4>
-                <form class="basketPopup__formBuy" action="#"><label class="basketPopup__productTextAmount" for="amount">Количество</label><input class="basketPopup__productAmount" id="amount" type="number" min="1" value="1"></form>
+        <div class="basketPopup"><span class="basketPopup__close"></span>
+            <div class="basketPopup__productsWrapper">
+                <div class="basketPopup__product"><img class="basketPopup__productImg" src="./images/slider/glasses1.png">
+                    <h4 class="basketPopup__productTitle">Name of the product</h4>
+                    <form class="basketPopup__formBuy" action="#"><label class="basketPopup__productTextAmount">Количество<input class="basketPopup__productInputAmount" type="number" min="1" value="1"></label><button class="basketPopup__productRemove" type="button">Удалить</button></form>
+                </div>
+                <div class="basketPopup__product"><img class="basketPopup__productImg" src="./images/slider/glasses1.png">
+                    <h4 class="basketPopup__productTitle">Name of the product</h4>
+                    <form class="basketPopup__formBuy" action="#"><label class="basketPopup__productTextAmount">Количество<input class="basketPopup__productInputAmount" type="number" min="1" value="1"></label><button class="basketPopup__productRemove" type="button">Удалить</button></form>
+                </div>
+                <div class="basketPopup__product"><img class="basketPopup__productImg" src="./images/slider/glasses1.png">
+                    <h4 class="basketPopup__productTitle">Name of the product</h4>
+                    <form class="basketPopup__formBuy" action="#"><label class="basketPopup__productTextAmount">Количество<input class="basketPopup__productInputAmount" type="number" min="1" value="1"></label><button class="basketPopup__productRemove" type="button">Удалить</button></form>
+                </div>
+                <div class="basketPopup__product"><img class="basketPopup__productImg" src="./images/slider/glasses1.png">
+                    <h4 class="basketPopup__productTitle">Name of the product</h4>
+                    <form class="basketPopup__formBuy" action="#"><label class="basketPopup__productTextAmount">Количество<input class="basketPopup__productInputAmount" type="number" min="1" value="1"></label><button class="basketPopup__productRemove" type="button">Удалить</button></form>
+                </div>
             </div>
-            <div class="basketPopup__product"><img class="basketPopup__productImg" src="./images/slider/glasses1.png">
-                <h4 class="basketPopup__productTitle">Name of the product</h4>
-                <form class="basketPopup__formBuy" action="#"><label class="basketPopup__productTextAmount" for="amount">Количество</label><input class="basketPopup__productAmount" id="amount" type="number" min="1" value="1"></form>
-            </div>
-            <div class="basketPopup__product"><img class="basketPopup__productImg" src="./images/slider/glasses1.png">
-                <h4 class="basketPopup__productTitle">Name of the product</h4>
-                <form class="basketPopup__formBuy" action="#"><label class="basketPopup__productTextAmount" for="amount">Количество</label><input class="basketPopup__productAmount" id="amount" type="number" min="1" value="1"></form>
+            <p class="basketPopup__totalCount">Количество товаров:<span class="basketPopup__productsCount">50</span></p>
+            <div class="basketPopup__totalPrice"><button class="basketPopup__btnReset" type="button">Очистить корзину</button>
+                <div class="basketPopup__priceContainer"><span class="basketPopup__text">Итого:</span><span class="basketPopup__price">12500 руб.</span><button class="basketPopup__btnConfirm" type="button">Оформить</button></div>
             </div>
         </div>
     </header>

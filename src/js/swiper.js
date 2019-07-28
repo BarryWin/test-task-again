@@ -1,7 +1,7 @@
 import Swiper from 'swiper';
 
-var swiper = new Swiper('.swiper-container', {
-    loop: true,
+let swiper = new Swiper('.swiper-container', {
+    loop: false,
     slidesPerView: 'auto',
     breakpointsInverse: true,
     breakpoints: {

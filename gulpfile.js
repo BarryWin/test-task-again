@@ -47,19 +47,25 @@ gulp.task('build-images', done => {
 });
 
 gulp.task('build-js', done => {
-    gulp.src('./src/js/**/*.{js,json}')
+    gulp.src('./src/js/**/*.js')
         .pipe(named())
         .pipe(webpack(require('./webpack.config')))
         .pipe(gulp.dest('./public/js'))
     done();
 });
 
+gulp.task('build-json', done => {
+    gulp.src('./src/js/**/*.json')
+        .pipe(named())
+        .pipe(gulp.dest('./public/js'))
+    done();
+});
 
 gulp.task('watch', function () {
     gulp.watch('./src/scss/**/*.scss', gulp.series('build-css'));
     gulp.watch('./src/templates/**/*.pug').on('change', gulp.series('build-html'));
     gulp.watch('./src/images/**/*').on('change', gulp.series('build-images'));
-    gulp.watch('./src/js/**/*.{js,json}', gulp.series('build-js'));
+    gulp.watch('./src/js/**/*.{js,json}', gulp.series('build-js', 'build-json'));
     // on('change', browserSync.reload);
 });
 
@@ -87,6 +93,7 @@ gulp.task('default',
         'build-css',
         'build-images',
         'build-js',
+        'build-json',
     )
 );
 
