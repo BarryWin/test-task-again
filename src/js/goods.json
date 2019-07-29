@@ -21,14 +21,14 @@
         {
             "id": 4,
             "image": "./images/slider/glasses3.png",
-            "name": "DAVIDOFF Urban Coolness Sunglasses",
+            "name": "DAVIDOFF2 Urban Coolness Sunglasses",
             "price": "12500 руб."
         },
         {
             "id": 5,
             "image": "./images/slider/lenses.png",
             "name": "ANOTHER LENSES",
-            "price": "12500 руб."
+            "price": "16500 руб."
         }
     ]
 }

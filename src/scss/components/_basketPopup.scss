@@ -3,7 +3,7 @@
     width: 60%;
     margin-top: 20px;
     margin-left: auto;
-    padding: 40px 10px 20px;
+    padding: 40px 15px 20px;
     border: 3px solid #3da1ba;
     border-radius: 15px;
     &__close{
@@ -37,16 +37,16 @@
     &__productsWrapper{
         display: flex;
         flex-direction: row-reverse;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: auto;
     }
     &__product{
         width: 25%;
-        margin-left: 40px;
+        margin-bottom: 15px;
         text-align: center;
         box-shadow: 0 1px 5px 1px #BBB;
-        padding: 7px 0 7px;
-        &:last-child{
-            margin-left: 0;
-        }
+        padding: 10px 0 10px;
     }
     &__productImg{
         display: block;
@@ -63,7 +63,6 @@
     &__productTextAmount{
         text-align: center;
         font-size: 14px;
-
     }
     &__productInputAmount{
         width: 40px;
@@ -123,12 +122,20 @@
     }
     &__text{
         align-self: center;
+        font-size: 14px;
+        &_lgFsize{
+            font-size: 17px;
+        }
     }
     &__price {
-        margin-left: 10px;
-        color: $darkHoverColor;
-        font-weight: bold;
-        font-size: 17px;
+        font-size: 14px;
+        margin-left: 5px;
+        &_cBlue{
+            color: $darkHoverColor;
+            font-weight: bold;
+            font-size: 17px;
+            margin-left: 10px;
+    }
     }
     &__btnConfirm{
         margin-left: 10px;
@@ -147,5 +154,4 @@
             background-color: $darkHoverColor;
         }
     }
-
 }

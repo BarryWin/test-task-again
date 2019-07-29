@@ -71,42 +71,15 @@ header.header
     .basketPopup
         span.basketPopup__close
         .basketPopup__productsWrapper
-            .basketPopup__product
-                img(src="./images/slider/glasses1.png").basketPopup__productImg
-                h4.basketPopup__productTitle Name of the product
-                form(action="#").basketPopup__formBuy
-                    label.basketPopup__productTextAmount Количество
-                        input(type="number", min="1", value="1").basketPopup__productInputAmount
-                    button(type="button").basketPopup__productRemove Удалить
-            .basketPopup__product
-                img(src="./images/slider/glasses1.png").basketPopup__productImg
-                h4.basketPopup__productTitle Name of the product
-                form(action="#").basketPopup__formBuy
-                    label.basketPopup__productTextAmount Количество
-                        input(type="number" min="1" value="1").basketPopup__productInputAmount
-                    button(type="button").basketPopup__productRemove Удалить
-            .basketPopup__product
-                img(src="./images/slider/glasses1.png").basketPopup__productImg
-                h4.basketPopup__productTitle Name of the product
-                form(action="#").basketPopup__formBuy
-                    label.basketPopup__productTextAmount Количество
-                        input(type="number" min="1" value="1").basketPopup__productInputAmount
-                    button(type="button").basketPopup__productRemove Удалить
-            .basketPopup__product
-                img(src="./images/slider/glasses1.png").basketPopup__productImg
-                h4.basketPopup__productTitle Name of the product
-                form(action="#").basketPopup__formBuy
-                    label.basketPopup__productTextAmount Количество
-                        input(type="number" min="1" value="1").basketPopup__productInputAmount
-                    button(type="button").basketPopup__productRemove Удалить
+
         p.basketPopup__totalCount
             | Количество товаров:
             span.basketPopup__productsCount 50
         .basketPopup__totalPrice
             button(type="button").basketPopup__btnReset Очистить корзину
             .basketPopup__priceContainer
-                span.basketPopup__text Итого:
-                span.basketPopup__price 12500 руб.
+                span.basketPopup__text.basketPopup__text_lgFsize Итого:
+                span.basketPopup__price.basketPopup__price_cBlue 12500 руб.
                 button(type="button").basketPopup__btnConfirm Оформить
 
 
