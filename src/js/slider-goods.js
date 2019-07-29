@@ -2,9 +2,9 @@ import goods from './goods.json'
 
 
 class ServiceProducts {
-    constructor(containerProducts, productsCatalog, basketPopup) {
+    constructor(containerProducts, productsCatalog, basketWrapper) {
         this.sliderContainer = document.querySelector(containerProducts);
-        this.basketContainer = document.querySelector(basketPopup);
+        this.basketContainer = document.querySelector(basketWrapper);
         this.goodsItems = productsCatalog;
         this.productsNumber = document.querySelector('.basketPopup__productsCount');
         this.counter = 0;
@@ -18,7 +18,13 @@ class ServiceProducts {
         this.create();
     }
 
-    create(){
+    create() {
+        let basketBtn = document.querySelector('.lineTwo__basket');
+        let basketPopup = document.querySelector('.basketPopup');
+        let basketPopupClose = document.querySelector('.basketPopup__close');
+        basketBtn.addEventListener("click", () => basketPopup.style.display = "block");
+        basketPopupClose.addEventListener("click", () => basketPopup.style.display = "none");
+
         // console.log(this.goodsItems[0].id)
         this.goodsItems.forEach((item) => {
             let slideWrapper = document.createElement('div');
@@ -44,10 +50,11 @@ class ServiceProducts {
             let toBasketBtn = slideWrapper.querySelector('.popularGoods__toBasketBtn');
 
             toBasketBtn.addEventListener('click', () => {
-                this.putProduct(item.id,item,toBasketBtn);
+                this.putProduct(item.id, item, toBasketBtn);
             });
 
             this.setOnLoad(item, toBasketBtn);
+
 
 
             this.sliderContainer.appendChild(slideWrapper);
@@ -56,17 +63,18 @@ class ServiceProducts {
 
     }
 
-    putProduct(id,item,toBasketBtn) {
+    putProduct(id, item, toBasketBtn) {
 
         let productTitle = document.querySelectorAll('.basketPopup__productTitle');
         // console.log(productTitle.innerHTML)
-        if(!localStorage.getItem(id)){
+        if (!localStorage.getItem(id)) {
             item.count = 1;
-            localStorage.setItem(id,JSON.stringify(item));
+            localStorage.setItem(id, JSON.stringify(item));
             toBasketBtn.classList.add('popularGoods__toBasketBtn_active');
             toBasketBtn.innerText = 'в корзине';
             this.addToBasket(item, toBasketBtn);
-            this.cost+= parseInt(item.price) * item.count;
+            // console.log(this.basketContainer.querySelector('.basketPopup__productInputAmount').value); //need to change the counter system
+            this.cost += parseInt(item.price) * item.count;
             this.totalCost.innerText = `${this.cost} руб.`;
             this.productsAmount(item);
         } else {
@@ -74,29 +82,29 @@ class ServiceProducts {
             toBasketBtn.classList.remove('popularGoods__toBasketBtn_active');
             toBasketBtn.innerText = 'в корзину';
             productTitle.forEach((title) => {
-                if(title.innerHTML == item.name){
+                if (title.innerHTML == item.name) {
                     this.basketContainer.removeChild(title.parentNode);
                     // console.log(title.innerHTML);
                 }
             });
-            this.cost-= parseInt(item.price) * item.count;
+            this.cost -= parseInt(item.price) * item.count;
             this.totalCost.innerText = `${this.cost} руб.`;
-            this.counter-= parseInt(item.count);
-            this.productsNumber.innerHTML = this.counter;  
+            this.counter -= parseInt(item.count);
+            this.productsNumber.innerHTML = this.counter;
         }
 
     }
 
     setOnLoad(item, toBasketBtn) {
 
-        if(localStorage.getItem(item.id)){
+        if (localStorage.getItem(item.id)) {
             item.count = JSON.parse(localStorage.getItem(item.id))['count'];
             toBasketBtn.classList.add('popularGoods__toBasketBtn_active');
             toBasketBtn.innerText = 'в корзине';
             this.addToBasket(item, toBasketBtn);
             // this.productCount.value = parseInt(item.count);
             this.productsAmount(item);
-            this.cost+= parseInt(item.price) * item.count;
+            this.cost += parseInt(item.price) * item.count;
             this.totalCost.innerText = `${this.cost} руб.`;
         } else {
             toBasketBtn.classList.remove('popularGoods__toBasketBtn_active');
@@ -105,7 +113,7 @@ class ServiceProducts {
 
     }
 
-    addToBasket(item, toBasketBtn){
+    addToBasket(item, toBasketBtn) {
 
         let productWrapper = document.createElement('div');
         productWrapper.classList.add("basketPopup__product");
@@ -124,39 +132,45 @@ class ServiceProducts {
         productWrapper.innerHTML = product;
 
         let productRemove = productWrapper.querySelector('.basketPopup__productRemove');
-        let inputAmount = document.querySelector('.basketPopup__productInputAmount');
+
 
         productRemove.addEventListener('click', () => {
-            this.putProduct(item.id,item,toBasketBtn);
+            this.putProduct(item.id, item, toBasketBtn);
         });
 
+        let inputAmount = productWrapper.querySelector('.basketPopup__productInputAmount');
         this.changeAmount(item, inputAmount);
 
         this.basketContainer.appendChild(productWrapper);
 
     }
 
-    productsAmount(item){
+    productsAmount(item) {
 
-        if(item.count){
-            this.counter+= parseInt(item.count);
-            this.productsNumber.innerHTML = this.counter;  
+        if (item.count) {
+            this.counter += parseInt(item.count);
+            this.productsNumber.innerHTML = this.counter;
         }
 
-    }; 
+    };
 
-    changeAmount(item, basketContainer){
+    changeAmount(item, inputAmount) {
 
-        inputAmount.addEventListener('change', () => {
+        if (localStorage.getItem(item.id)) {
+        inputAmount.addEventListener("change", () => {
 
             let retItem = JSON.parse(localStorage.getItem(item.id));
             localStorage.removeItem(item.id);
-            retItem.count
-            // item.count = inputAmount.value;
+            console.log(retItem);
+
+            retItem.count = inputAmount.value;
+            localStorage.setItem(item.id, JSON.stringify(retItem));
+            this.productsAmount(item);
+            this.cost += parseInt(item.price) * item.count;
+            this.totalCost.innerText = `${this.cost} руб.`;
+
         })
-        console.log(retItem);
-    }
+    }};
 }
 
 let serviceGoods = new ServiceProducts('.swiper-wrapper', goods.items, '.basketPopup__productsWrapper');
-
