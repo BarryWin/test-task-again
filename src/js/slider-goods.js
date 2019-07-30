@@ -76,7 +76,7 @@ class ServiceProducts {
             // console.log(this.basketContainer.querySelector('.basketPopup__productInputAmount').value); //need to change the counter system
             this.cost += parseInt(item.price) * item.count;
             this.totalCost.innerText = `${this.cost} руб.`;
-            this.productsAmount(item);
+            // this.productsAmount(item);
         } else {
             localStorage.removeItem(id);
             toBasketBtn.classList.remove('popularGoods__toBasketBtn_active');
@@ -103,7 +103,6 @@ class ServiceProducts {
             toBasketBtn.innerText = 'в корзине';
             this.addToBasket(item, toBasketBtn);
             // this.productCount.value = parseInt(item.count);
-            this.productsAmount(item);
             this.cost += parseInt(item.price) * item.count;
             this.totalCost.innerText = `${this.cost} руб.`;
         } else {
@@ -132,24 +131,27 @@ class ServiceProducts {
         productWrapper.innerHTML = product;
 
         let productRemove = productWrapper.querySelector('.basketPopup__productRemove');
-
+        let inputAmount = productWrapper.querySelector('.basketPopup__productInputAmount');
 
         productRemove.addEventListener('click', () => {
             this.putProduct(item.id, item, toBasketBtn);
         });
 
-        let inputAmount = productWrapper.querySelector('.basketPopup__productInputAmount');
+        this.productsAmount(item, inputAmount);
+
         this.changeAmount(item, inputAmount);
 
         this.basketContainer.appendChild(productWrapper);
 
     }
 
-    productsAmount(item) {
+    productsAmount(item, inputAmount) {
 
-        if (item.count) {
-            this.counter += parseInt(item.count);
-            this.productsNumber.innerHTML = this.counter;
+        if (localStorage.getItem(item.id)) {
+                        
+                this.counter += parseInt(inputAmount.value);
+                this.productsNumber.innerHTML = this.counter;
+
         }
 
     };
@@ -161,11 +163,13 @@ class ServiceProducts {
 
             let retItem = JSON.parse(localStorage.getItem(item.id));
             localStorage.removeItem(item.id);
-            console.log(retItem);
+            // console.log(retItem);
 
             retItem.count = inputAmount.value;
             localStorage.setItem(item.id, JSON.stringify(retItem));
-            this.productsAmount(item);
+            // this.productsAmount(item, inputAmount);
+
+
             this.cost += parseInt(item.price) * item.count;
             this.totalCost.innerText = `${this.cost} руб.`;
 
