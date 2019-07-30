@@ -10,12 +10,14 @@ class ServiceProducts {
         this.counter = 0;
         this.totalCost = document.querySelector('.basketPopup__price_cBlue');
         this.cost = 0;
-        this.productCount = document.querySelector('.basketPopup__productInputAmount')
+        this.basketClearBtn = document.querySelector('.basketPopup__btnReset');
+
         this.init();
     }
 
     init() {
         this.create();
+        this.basketClear();
     }
 
     create() {
@@ -24,7 +26,7 @@ class ServiceProducts {
         let basketPopupClose = document.querySelector('.basketPopup__close');
         basketBtn.addEventListener("click", () => basketPopup.style.display = "block");
         basketPopupClose.addEventListener("click", () => basketPopup.style.display = "none");
-
+        this.productsTotal();
         // console.log(this.goodsItems[0].id)
         this.goodsItems.forEach((item) => {
             let slideWrapper = document.createElement('div');
@@ -55,8 +57,6 @@ class ServiceProducts {
 
             this.setOnLoad(item, toBasketBtn);
 
-
-
             this.sliderContainer.appendChild(slideWrapper);
 
         });
@@ -74,9 +74,9 @@ class ServiceProducts {
             toBasketBtn.innerText = 'в корзине';
             this.addToBasket(item, toBasketBtn);
             // console.log(this.basketContainer.querySelector('.basketPopup__productInputAmount').value); //need to change the counter system
-            this.cost += parseInt(item.price) * item.count;
-            this.totalCost.innerText = `${this.cost} руб.`;
-            // this.productsAmount(item);
+            // this.cost += parseInt(item.price) * item.count;
+            // this.totalCost.innerText = `${this.cost} руб.`;
+            this.productsTotal();
         } else {
             localStorage.removeItem(id);
             toBasketBtn.classList.remove('popularGoods__toBasketBtn_active');
@@ -87,10 +87,9 @@ class ServiceProducts {
                     // console.log(title.innerHTML);
                 }
             });
-            this.cost -= parseInt(item.price) * item.count;
-            this.totalCost.innerText = `${this.cost} руб.`;
-            this.counter -= parseInt(item.count);
-            this.productsNumber.innerHTML = this.counter;
+            // this.cost -= parseInt(item.price) * item.count;
+            // this.totalCost.innerText = `${this.cost} руб.`;
+            this.productsTotal();
         }
 
     }
@@ -102,9 +101,6 @@ class ServiceProducts {
             toBasketBtn.classList.add('popularGoods__toBasketBtn_active');
             toBasketBtn.innerText = 'в корзине';
             this.addToBasket(item, toBasketBtn);
-            // this.productCount.value = parseInt(item.count);
-            this.cost += parseInt(item.price) * item.count;
-            this.totalCost.innerText = `${this.cost} руб.`;
         } else {
             toBasketBtn.classList.remove('popularGoods__toBasketBtn_active');
             toBasketBtn.innerText = 'в корзину';
@@ -137,7 +133,7 @@ class ServiceProducts {
             this.putProduct(item.id, item, toBasketBtn);
         });
 
-        this.productsAmount(item, inputAmount);
+        // this.productsTotal(item, inputAmount);
 
         this.changeAmount(item, inputAmount);
 
@@ -145,36 +141,52 @@ class ServiceProducts {
 
     }
 
-    productsAmount(item, inputAmount) {
+    productsTotal() {
 
-        if (localStorage.getItem(item.id)) {
-                        
-                this.counter += parseInt(inputAmount.value);
-                this.productsNumber.innerHTML = this.counter;
-
+        this.counter = 0;
+        this.cost = 0;
+        for (let i = 0; i < localStorage.length; i++) {
+            let myKey = localStorage.key(i);
+            let retItem = JSON.parse(localStorage.getItem(myKey));
+            this.counter += parseInt(retItem.count);
+            this.cost += parseInt(retItem.price) * parseInt(retItem.count);
         }
+        this.productsNumber.innerHTML = this.counter;
+        this.totalCost.innerText = `${this.cost} руб.`;
+
 
     };
 
     changeAmount(item, inputAmount) {
 
         if (localStorage.getItem(item.id)) {
-        inputAmount.addEventListener("change", () => {
+            inputAmount.addEventListener("change", () => {
 
-            let retItem = JSON.parse(localStorage.getItem(item.id));
-            localStorage.removeItem(item.id);
-            // console.log(retItem);
+                let retItem = JSON.parse(localStorage.getItem(item.id));
+                localStorage.removeItem(item.id);
 
-            retItem.count = inputAmount.value;
-            localStorage.setItem(item.id, JSON.stringify(retItem));
-            // this.productsAmount(item, inputAmount);
+                retItem.count = inputAmount.value;
+                localStorage.setItem(item.id, JSON.stringify(retItem));
+                this.productsTotal();
 
 
-            this.cost += parseInt(item.price) * item.count;
-            this.totalCost.innerText = `${this.cost} руб.`;
+            })
+        }
+    };
 
+    basketClear() {
+
+        this.basketClearBtn.addEventListener("click", () => {
+            let toBasketBtn = document.querySelectorAll('.popularGoods__toBasketBtn');
+            toBasketBtn.forEach((Btn) =>{
+                Btn.classList.remove("popularGoods__toBasketBtn_active")
+            })
+            let productsWrapper = document.querySelector('.basketPopup__productsWrapper');
+            productsWrapper.innerHTML = "";
+            localStorage.clear();
+            this.productsTotal();
         })
-    }};
+    }
 }
 
 let serviceGoods = new ServiceProducts('.swiper-wrapper', goods.items, '.basketPopup__productsWrapper');
